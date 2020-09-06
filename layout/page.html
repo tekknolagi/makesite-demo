@@ -1,42 +1,36 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>{{ title }} - {{ subtitle }}</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" type="text/css" href="{{ base_path }}/css/style.css">
-</head>
+	<head>
+		<title>{{ title }}</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width">
+		<link rel="stylesheet" type="text/css" href="{{ base_path }}/css/main.css">
+		<link rel="stylesheet" type="text/css" href="{{ base_path }}/css/post.css">
+		<link rel="stylesheet" type="text/css" href="{{ base_path }}/css/highlight.css">
+	</head>
 
-<body id="{{ slug }}">
-
-<nav>
-<section>
-    <span class="home">
-        <a href="{{ base_path }}/">Home</a>
-    </span>
-    <span class="links">
-        <a href="{{ base_path }}/blog/">Blog</a>
-        <a href="{{ base_path }}/news/">News</a>
-        <a href="{{ base_path }}/contact/">Contact</a>
-        <a href="{{ base_path }}/about/">About</a>
-    </span>
-</section>
-</nav>
-
-<main>
-{{ content }}
-</main>
-
-<footer>
-<section>
-<p>&copy; {{ current_year }} Lorem Ipsum</p>
-<p>
-    <a href="https://twitter.com/sunainapai">Twitter</a>
-    <a href="https://github.com/sunainapai">GitHub</a>
-    <a href="https://www.example.com/">Example</a>
-</p>
-</section>
-</footer>
-
-</body>
+	<body id="{{ slug }}">
+		<div class="pagecontents">
+			<nav>
+				<div class="navbar">
+					<a href="/">home</a>
+					<a href="/blog/">blog</a>
+					<a href="/blog/lisp/">lisp</a>
+					<a href="/favorites/">favorites</a>
+					<a href="/excollege/">my class</a>
+					<a href="/pl-resources/">pl resources</a>
+					<!--<a class="newlink" href="/recipes/">recipes</a> -->
+				</div>
+			</nav>
+			<div class="container">
+				{{ content }}
+			</div>
+			<footer>
+				<hr>
+				This blog is <a href="https://github.com/tekknolagi/tekknolagi.github.com">open source</a>.
+				See an error? Go ahead and
+				<a href="https://github.com/tekknolagi/tekknolagi.github.com">propose a change</a>.
+			</footer>
+		</div>
+	</body>
 </html>

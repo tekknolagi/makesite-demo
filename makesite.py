@@ -102,8 +102,8 @@ def read_content(filename):
         try:
             if _test == 'ImportError':
                 raise ImportError('Error forced by test')
-            import commonmark
-            text = commonmark.commonmark(text)
+            import markdown
+            text = markdown.markdown(text, extensions=['markdown.extensions.footnotes', 'markdown.extensions.fenced_code', 'markdown.extensions.codehilite'])
         except ImportError as e:
             log('WARNING: Cannot render Markdown in {}: {}', filename, str(e))
 
@@ -134,6 +134,7 @@ def make_pages(src, dst, layout, **params):
 
         # Populate placeholders in content if content-rendering is enabled.
         if page_params.get('render') == 'yes':
+            print(f"{src_path} page params:", page_params['base_path'], page_params['blog'])
             rendered_content = render(page_params['content'], **page_params)
             page_params['content'] = rendered_content
             content['content'] = rendered_content
@@ -198,7 +199,7 @@ def main():
     list_layout = render(page_layout, content=list_layout)
 
     # Create site pages.
-    make_pages('content/_index.html', '_site/index.html',
+    make_pages('content/_index.md', '_site/index.html',
                page_layout, **params)
     make_pages('content/[!_]*.html', '_site/{{ slug }}/index.html',
                page_layout, **params)
